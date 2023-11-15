@@ -2,21 +2,14 @@
   <div class="about">
     <h1>This is an about page</h1>
     <div>
-      <button @click="DECREMENT">-</button>
-      <span>{{ count }}</span>
-      <button @click="INCREMENT">+</button>
+      <button @click="DECREMENT()">-</button>
+      <span class="mx-3">{{ count }}</span>
+      <button @click="INCREMENT()">+</button>
     </div>
   </div>
 </template>
-<script lang="ts">
-import Vue from 'vue'
-import { mapState, mapMutations } from 'vuex'
-export default Vue.extend({
-  computed: {
-    ...mapState(['count']),
-  },
-  methods: {
-    ...mapMutations(['INCREMENT', 'DECREMENT']),
-  },
-})
+<script lang="ts" setup>
+import { useState, useMutations } from 'vuex-composition-helpers'
+const { count } = useState(['count'])
+const { INCREMENT, DECREMENT } = useMutations(['INCREMENT', 'DECREMENT'])
 </script>

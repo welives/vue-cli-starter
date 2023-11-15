@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ props.msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -88,13 +88,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() readonly msg: string
-}
+<script lang="ts" setup>
+import { defineProps } from 'vue'
+const props = defineProps({
+  msg: String,
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
