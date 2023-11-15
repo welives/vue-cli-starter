@@ -1,12 +1,32 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
+// 导入其他vuex模块
+const modulesFiles = require.context('./modules', true, /\.{js|ts}$/)
+const modules = modulesFiles.keys().reduce((modules: Record<string, unknown>, modulePath) => {
+  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
+  const value = modulesFiles(modulePath)
+  modules[moduleName] = value.default
+  return modules
+}, {})
+
 export default new Vuex.Store({
-  state: {},
+  plugins: [createPersistedState()],
+  state: {
+    count: 0,
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    INCREMENT(state) {
+      state.count++
+    },
+    DECREMENT(state) {
+      state.count--
+    },
+  },
   actions: {},
-  modules: {},
+  modules,
 })
