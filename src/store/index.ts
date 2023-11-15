@@ -5,7 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 // 导入其他vuex模块
-const modulesFiles = require.context('./modules', true, /\.{js|ts}$/)
+const modulesFiles = require.context('./modules', true, /\.ts$/)
 const modules = modulesFiles.keys().reduce((modules: Record<string, unknown>, modulePath) => {
   const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
   const value = modulesFiles(modulePath)
@@ -20,10 +20,10 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
-    INCREMENT(state) {
+    increment(state) {
       state.count++
     },
-    DECREMENT(state) {
+    decrement(state) {
       state.count--
     },
   },

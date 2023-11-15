@@ -4,11 +4,11 @@ const state = {
   isLogged: false,
 }
 const mutations = {
-  SET_TOKEN(state: State, token: string) {
+  setToken(state: State, token: string) {
     state.token = token
     state.isLogged = true
   },
-  REMOVE_TOKEN(state: State) {
+  removeToken(state: State) {
     state.token = ''
     state.isLogged = false
   },
