@@ -2,13 +2,17 @@
   <div class="about">
     <h1>This is an about page</h1>
     <div class="mb-3">
-      <button @click="decrement()">-</button>
+      <VanButton type="danger" size="small" @click="decrement()">
+        <template #icon><VanIcon name="minus" /></template>
+      </VanButton>
       <span class="mx-3">{{ count }}</span>
-      <button @click="increment()">+</button>
+      <VanButton type="primary" size="small" @click="increment()">
+        <template #icon><VanIcon name="plus" /></template>
+      </VanButton>
     </div>
     <div class="flex justify-center gap-3">
-      <button @click="login">Login</button>
-      <button @click="removeToken()">Logout</button>
+      <VanButton @click="login">Login</VanButton>
+      <VanButton @click="removeToken()">Logout</VanButton>
     </div>
   </div>
 </template>
