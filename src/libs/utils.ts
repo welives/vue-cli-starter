@@ -161,8 +161,8 @@ class Utils {
   /** @description 判断对象是否有某属性 */
   hasOwnProperty = (
     ({ hasOwnProperty }) =>
-    (obj: object, prop: string) =>
-      hasOwnProperty.call(obj, prop)
+      (obj: object, prop: string) =>
+        hasOwnProperty.call(obj, prop)
   )(Object.prototype)
   /** @description 把baseURL和relativeURL组合起来 */
   combineURLs(baseURL: string, relativeURL: string) {
@@ -238,7 +238,7 @@ class Utils {
   /** @description 洗牌算法 */
   shuffle = (arr: any[]) => {
     const res = []
-    let random
+    let random = void 0
     while (arr.length > 0) {
       random = Math.floor(Math.random() * arr.length)
       res.push(arr.splice(random, 1)[0])
